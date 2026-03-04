@@ -1,0 +1,20 @@
+name: "Lab 03 - Node CI"
+on: { workflow_dispatch: {} }
+jobs:
+  node-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: apps/node-api
+
+      - name: Run tests
+        run: npm test
+        working-directory: apps/node-api
