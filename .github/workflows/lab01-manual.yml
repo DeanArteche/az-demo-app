@@ -1,0 +1,10 @@
+name: "Lab 01 - Manual Trigger"
+on: { workflow_dispatch: {} }
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Repo: $GITHUB_REPOSITORY"
+          echo "Run ID: $GITHUB_RUN_ID"
+          echo "Actor: $GITHUB_ACTOR"
