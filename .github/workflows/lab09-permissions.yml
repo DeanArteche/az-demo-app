@@ -1,0 +1,12 @@
+name: "Lab 09 - Permissions"
+on: { workflow_dispatch: {} }
+Permissions:
+  contents: read
+jobs:
+  print-sha:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Print SHA
+        run: echo "SHA: $GITHUB_SHA"
