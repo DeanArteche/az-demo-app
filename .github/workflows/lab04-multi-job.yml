@@ -33,6 +33,6 @@ jobs:
         run: npm ci
         working-directory: apps/node-api
 
-      - name: Run tests
+      - name: Run test
         run: npm tests
         working-directory: apps/node-api
