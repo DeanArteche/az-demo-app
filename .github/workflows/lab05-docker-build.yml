@@ -1,0 +1,14 @@
+name: "Lab 05 - Docker Build"
+on: { workflow_dispatch: {} }
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t python-api:lab05 apps/python-api
+
+      - name: Show Docker images
+        run: docker images
