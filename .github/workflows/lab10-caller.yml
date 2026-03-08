@@ -1,0 +1,13 @@
+name: "Lab 10 - Reusable Workflow"
+on: { workflow_dispatch: {} }
+jobs: 
+  python:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      service: python-api
+
+
+  node:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      service: node-api
