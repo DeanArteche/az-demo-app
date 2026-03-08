@@ -6,7 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-
       - name: Setup Python 3.12
         uses: actions/setup-python@v5
         with:
@@ -15,10 +14,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r apps/python-api/requirements.txt
 
-      - name: Smoke tes
+      - name: Smoke test
         run: |
           python -c "import flask; print('flask-import-ok')"
-  
+
   node-ci:
     runs-on: ubuntu-latest
     steps:
