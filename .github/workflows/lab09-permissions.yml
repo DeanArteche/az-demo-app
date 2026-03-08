@@ -9,4 +9,5 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Print SHA
-        run: echo "SHA: ${GITHUB_SHA}"
+        run: |
+          echo SHA: ${GITHUB_SHA}
