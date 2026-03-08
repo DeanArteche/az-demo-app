@@ -1,0 +1,38 @@
+name: "Lab 04 - Multi Job"
+on: { workflow_dispatch: {} }
+jobs:
+  python-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r apps/python-api/requirements.txt
+
+      - name: Smoke tes
+        run: |
+          python -c "import flask; print('flask-import-ok')"
+  
+  node-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: apps/node-api
+
+      - name: Run tests
+        run: npm tests
+        working-directory: apps/node-api
