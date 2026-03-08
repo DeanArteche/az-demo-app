@@ -1,0 +1,33 @@
+name: "Lab 08 - Job Dependencies"
+on: { workflow_dispatch: {} }
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create build-info.txt
+        run: |
+          echo "Repo: $GITHUB_REPOSITORY" > build-info.txt
+          echo "SHA: $GITHUB_SHA" >> build-info.txt
+          echo "Run ID: $GITHUB_RUN_ID" >> build-info.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-info
+          path: build-info.txt
+  
+
+  download:
+    needs: upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-info
+
+      - name: Print artifact content
+        run: cat build-info.txt
+
