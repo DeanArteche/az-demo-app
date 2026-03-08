@@ -1,6 +1,6 @@
 name: "Lab 09 - Permissions"
 on: { workflow_dispatch: {} }
-Permissions:
+permissions:
   contents: read
 jobs:
   print-sha:
