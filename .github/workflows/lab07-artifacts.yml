@@ -1,11 +1,10 @@
 name: "Lab 07 - Artifacts"
-on: { workflow_dispatch {} }
+on: { workflow_dispatch: {} }
 jobs:
   build-info:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
 
       - name: Create build-info.txt
         run: |
@@ -13,8 +12,7 @@ jobs:
           echo "SHA: $GITHUB_SHA" >> build-info.txt
           echo "Run ID: $GITHUB_RUN_ID" >> build-info.txt
 
-
-      - name: Upload Artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: build-info
