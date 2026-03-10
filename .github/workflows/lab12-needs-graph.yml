@@ -1,0 +1,17 @@
+name: "Lab 12 - Needs Graph"
+on: 
+  workflow_dispatch:
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "unit-tests"
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "lint"
+  package:
+    runs-on: ubuntu-latest
+    needs: [unit-tests, lint]
+    steps:
+      - run: echo "package"
